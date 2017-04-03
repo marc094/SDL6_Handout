@@ -46,8 +46,10 @@ bool ModuleSound::CleanUp() {
 
 	for (int i = 0; i < MAX_SOUNDS; i++)
 	{
-		if (sounds[i] != nullptr)
+		if (sounds[i] != nullptr) {
 			Mix_FreeChunk(sounds[i]);
+			sounds[i] = nullptr;
+		}
 	}
 	if (isPlaying())
 		StopMusic();
@@ -64,8 +66,10 @@ void ModuleSound::StopAll() {
 
 	for (int i = 0; i < MAX_SOUNDS; i++)
 	{
-		if (sounds[i] != nullptr)
+		if (sounds[i] != nullptr) {
 			Mix_FreeChunk(sounds[i]);
+			sounds[i] = nullptr;
+		}
 	}
 
 	if (isPlaying())

@@ -5,6 +5,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleSound.h"
+#include "ModuleInput.h"
 #include "SDL\include\SDL.h"
 
 
@@ -40,7 +41,7 @@ bool ModuleSceneIntro::Start() {
 
 update_status ModuleSceneIntro::Update() {
 	unsigned int curent_time_ms = SDL_GetTicks();
-	if (curent_time_ms >= (unsigned int)intro_time_s * 1000 && transitioning == false) {
+	if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || curent_time_ms >= (unsigned int)intro_time_s * 1000) && transitioning == false) {
 		App->fade->FadeToBlack(this, App->scene_space, 2.0f);
 		App->sound->PlaySound(start_fx, 0);
 		transitioning = true;

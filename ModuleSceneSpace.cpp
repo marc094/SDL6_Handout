@@ -3,6 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
+#include "ModuleSound.h"
 #include "ModuleSceneSpace.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
@@ -30,6 +31,7 @@ bool ModuleSceneSpace::CleanUp()
 {
 	LOG("Unloading space scene");
 
+	App->sound->StopAll();
 	App->textures->Unload(background);
 	App->player->Disable();
 	
