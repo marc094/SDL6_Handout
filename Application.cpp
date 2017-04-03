@@ -7,6 +7,8 @@
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleParticles.h"
+#include "ModuleSceneIntro.h"
+#include "ModuleSound.h"
 
 Application::Application()
 {
@@ -15,9 +17,11 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = scene_space = new ModuleSceneSpace();
-	modules[5] = player = new ModulePlayer();
-	modules[6] = particles = new ModuleParticles();
-	modules[7] = fade = new ModuleFadeToBlack();
+	modules[5] = intro = new ModuleSceneIntro();
+	modules[6] = player = new ModulePlayer();
+	modules[7] = particles = new ModuleParticles();
+	modules[8] = sound = new ModuleSound();
+	modules[9] = fade = new ModuleFadeToBlack();
 }	
 
 Application::~Application()
@@ -32,6 +36,7 @@ bool Application::Init()
 
 	// Disable all stopped modules here
 	player->Disable();
+	scene_space->Disable();
 	// ---
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

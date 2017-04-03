@@ -15,6 +15,7 @@ private:
 	Mix_Chunk* bg_music;
 	Mix_Chunk* start_fx;
 	float intro_time_s = 0.0f;
+	bool transitioning = false;
 
 public:
 	bool Init();
